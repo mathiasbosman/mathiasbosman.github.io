@@ -19,7 +19,7 @@ website at http://localhost:8081 (mind the port here)
 
 ## Local development
 
-### Spring Boot
+### OAuth2
 
 For local development it is required to copy and adjust the [properties file][application_props] for
 Spring Boot in a seperate profile. The application uses OAuth2 for authorization which (sadly) cannot be disabled via a
@@ -35,6 +35,20 @@ spring:
             clientId: someClientId
             clientSecret: someClientSecret
             redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+```
+
+On the provider side make sure that the callback Url goes to:
+```text
+yourHost.com/oauth2/callback/PROVIDER_ID
+```
+In the example of GitHub:
+```text
+yourHost.com/oauth2/callback/github
+```
+
+Locally add the port:
+```text
+http://localhost:8081/oauth2/callback/github
 ```
 
 ### React.js
