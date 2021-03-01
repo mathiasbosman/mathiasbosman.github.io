@@ -25,11 +25,22 @@ public class AuthController {
     this.userService = userService;
   }
 
+  /**
+   * Returns a list of OAuth2Providers that are configured in the backend
+   *
+   * @return Set of OAuth2Providers configuredin the backend
+   */
   @GetMapping("/providers")
   public Set<OAuth2Provider> providers() {
     return oAuth2Service.getRegisteredProviders();
   }
 
+  /**
+   * Returns the data of the logged in user
+   *
+   * @param user The OAuth2User, injected
+   * @return UserDto with user info
+   */
   @GetMapping("/user")
   public UserDto getUser(@AuthenticationPrincipal OAuth2User user) {
     if (user == null) {

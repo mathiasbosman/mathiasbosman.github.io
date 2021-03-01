@@ -58,6 +58,7 @@ public class PostServiceImpl implements PostService {
 
   @Override
   public PostDto post(PostContentDto contentDto, UUID userId) {
+    // should we revalidate?
     throw new UnsupportedOperationException("not yet implemented");
   }
 

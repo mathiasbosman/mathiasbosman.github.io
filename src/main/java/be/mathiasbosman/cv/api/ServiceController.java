@@ -34,28 +34,52 @@ public class ServiceController {
     this.userService = userService;
   }
 
+  /**
+   * Get all none-deleted posts
+   * @return List of PostDto
+   */
   @GetMapping(value = "/public/posts")
   public List<PostDto> posts() {
     return postService.getPosts();
   }
 
+  /**
+   * Get all posts for certain user
+   * @param userId The UUID of the user
+   * @return List of PostDto
+   */
   @GetMapping(value = "/public/posts/{userId}")
   public List<PostDto> postsByUsername(@PathVariable("userId") UUID userId) {
     return postService.getPosts(userId);
   }
 
+  /**
+   * Deletes a certain post
+   * @param id The UUID of the post
+   * @return PostDto of the deleted post
+   */
   @DeleteMapping(value = "/post/{id}")
   public @ResponseBody
   PostDto deletePost(@PathVariable UUID id) {
     return postService.delete(id);
   }
 
+  /**
+   * Validates given post content
+   * @param contentDto The content to validate
+   * @return Result of the validation check. Either true or false
+   */
   @PostMapping(value = "/validate")
   public @ResponseBody
   boolean validate(@RequestBody PostContentDto contentDto) {
     return postService.validate(contentDto);
   }
 
+  /**
+   * Save a post
+   * @param contentDto The content to save
+   * @return PostDto of the created post
+   */
   @PostMapping(value = "/post")
   public @ResponseBody
   PostDto post(@RequestBody PostContentDto contentDto) {
