@@ -59,7 +59,7 @@ Developping the frontend is as simple as running
 npm start
 ```
 
-in the "webapp" folder while the backend application is running. By default the requests will be proxied to the backend.
+in the "webapp" folder while the backend application is running. By default, the requests will be proxied to the backend.
 See the [package.json][package_json] file for the proxy setting.
 
 ## Publishing
